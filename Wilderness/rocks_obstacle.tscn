@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs8yyw6rklpiw"]
+
+[ext_resource type="Texture2D" uid="uid://b6nlmkhph07rk" path="res://assets/Wilderness/rocks.png" id="1_184rf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4m1rs"]
+radius = 8.0
+height = 20.0
+
+[node name="rocksObstacle" type="StaticBody2D"]
+z_as_relative = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_184rf")
+hframes = 3
+vframes = 2
+frame = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4m1rs")

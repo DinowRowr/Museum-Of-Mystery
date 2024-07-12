@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://drffilvv5cywe"]
+
+[ext_resource type="Script" path="res://assets/Wilderness/main.gd" id="1_lclo2"]
+[ext_resource type="PackedScene" uid="uid://dt4qa042f3a6k" path="res://assets/Wilderness/wilderness.tscn" id="1_s3ip3"]
+[ext_resource type="PackedScene" uid="uid://bs8yyw6rklpiw" path="res://assets/Wilderness/rocks_obstacle.tscn" id="2_oo0ti"]
+[ext_resource type="PackedScene" uid="uid://bda3ci4jn6km4" path="res://assets/player/player.tscn" id="3_7f1vt"]
+[ext_resource type="Script" path="res://scenes/CanvasLayer.gd" id="4_s7mp4"]
+[ext_resource type="PackedScene" uid="uid://by4u2hq4um0m2" path="res://scenes/UI/GUI/heart/heart_container.tscn" id="5_86hma"]
+[ext_resource type="PackedScene" uid="uid://bukgqkpk2qw68" path="res://scenes/inventory/inventory_gui.tscn" id="6_mt763"]
+[ext_resource type="PackedScene" uid="uid://bpamqdvnagt4t" path="res://assets/SceneTrigger/scene_trigger.tscn" id="7_f21oi"]
+[ext_resource type="PackedScene" uid="uid://iuossovfwnne" path="res://bg1.tscn" id="9_in2lg"]
+[ext_resource type="PackedScene" uid="uid://bmhkqj8l2aa2k" path="res://pause_menu.tscn" id="10_8iayg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjk6a"]
+size = Vector2(21, 19.5)
+
+[node name="main3" type="Node2D"]
+script = ExtResource("1_lclo2")
+
+[node name="Wilderness" parent="." instance=ExtResource("1_s3ip3")]
+layer_4/tile_data = PackedInt32Array(852004, 655360, 3, 917540, 655360, 4, 917541, 655360, 5, 852006, 720896, 3, 917542, 720896, 4, 852007, 720896, 3, 917543, 720896, 4, 852005, 720896, 3, 852008, 786432, 3, 917544, 786432, 4, 786468, 655360, 2, 786469, 720896, 2, 786470, 720896, 2, 786471, 720896, 2, 786472, 786432, 2, 589837, 1245184, 5, 655373, 1245184, 6, 720909, 1245184, 7, 589838, 1310720, 5, 655374, 1310720, 6, 589839, 1376256, 5, 655375, 1376256, 6, 720911, 1376256, 7, 524348, 1638400, 10, 589884, 1638400, 11, 655420, 1638400, 12, 524349, 1703936, 10, 589885, 1310720, 6, 524350, 1769472, 10, 589886, 1769472, 11, 655422, 1769472, 12, 655419, 393216, 5, 655423, 393216, 5, 1441802, 1245184, 5, 1507338, 1245184, 6, 1572874, 1245184, 7, 1441803, 1310720, 5, 1507339, 1310720, 6, 1441804, 1376256, 5, 1507340, 1376256, 6, 1572876, 1376256, 7, 1638428, 458752, 6, 1703945, 1310720, 10, 1638412, 1245184, 10, 720910, 917504, 3, 1572875, 917504, 3, 720958, 1310720, 8)
+
+[node name="obstacle" type="Node2D" parent="Wilderness"]
+
+[node name="rocksObstacle" parent="Wilderness/obstacle" instance=ExtResource("2_oo0ti")]
+position = Vector2(183, 385)
+
+[node name="rocksObstacle2" parent="Wilderness/obstacle" instance=ExtResource("2_oo0ti")]
+position = Vector2(888, 487)
+
+[node name="Player" parent="Wilderness" instance=ExtResource("3_7f1vt")]
+position = Vector2(600, 245)
+
+[node name="follow_cam" type="Camera2D" parent="Wilderness/Player"]
+position = Vector2(0, -4)
+zoom = Vector2(5, 5)
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 650
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("4_s7mp4")
+
+[node name="heartContainer" parent="CanvasLayer" instance=ExtResource("5_86hma")]
+offset_left = 54.0
+offset_top = 11.0
+offset_right = 54.0
+offset_bottom = 11.0
+metadata/_edit_use_anchors_ = true
+
+[node name="InventoryGUI" parent="CanvasLayer" instance=ExtResource("6_mt763")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -339.0
+offset_top = -220.0
+offset_right = -204.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SceneTrigger" parent="." instance=ExtResource("7_f21oi")]
+position = Vector2(984, 152)
+connected_scene = "final_boss_room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
+shape = SubResource("RectangleShape2D_pjk6a")
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("9_in2lg")]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Pause Menu" parent="CanvasLayer2" instance=ExtResource("10_8iayg")]
+offset_left = -1.0
+offset_top = 3.0
+offset_right = -1.0
+offset_bottom = 3.0
