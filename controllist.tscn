@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://5yfug1jrqras"]
+
+[ext_resource type="FontFile" uid="uid://d1f6rt03h8u40" path="res://assets/fonts/SuperPixel-m2L8j.ttf" id="1_4xm7y"]
+[ext_resource type="Shader" path="res://controllist.gdshader" id="1_iqi67"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3pd87"]
+shader = ExtResource("1_iqi67")
+shader_parameter/amount = null
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_3pd87")
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_4xm7y")
+text = "CONTROLS:
+
+-WASD - Move
+-\"i\" - Inventory
+-\"u\" - Use Item
+-\"Left Click\" - Select items in Inventory
+-\"Tab\" - Scroll the selector in the Hotbar"

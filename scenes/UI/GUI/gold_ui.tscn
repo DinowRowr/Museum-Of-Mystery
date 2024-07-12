@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dudtxsomns633"]
+
+[ext_resource type="Texture2D" uid="uid://bcoqkndoxpgxc" path="res://scenes/items/icons/Coin2.png" id="1_eyvs7"]
+[ext_resource type="FontFile" uid="uid://dq2rtqo7j5oii" path="res://assets/fonts/MinimalPixel v2.ttf" id="2_rlx4j"]
+
+[node name="GoldUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(34, 34)
+scale = Vector2(5, 5)
+texture = ExtResource("1_eyvs7")
+hframes = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 15.0
+offset_right = 158.0
+offset_bottom = 57.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 21
+theme_override_fonts/font = ExtResource("2_rlx4j")
+theme_override_font_sizes/font_size = 42
+text = "100"
+horizontal_alignment = 2

@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxwil3hcc2tmx"]
+
+[ext_resource type="Texture2D" uid="uid://cn0s0a7v44frp" path="res://assets/background/bg_main_menu_gO.jpg" id="1_lj4ke"]
+[ext_resource type="Script" path="res://gameover.gd" id="1_vwrua"]
+[ext_resource type="FontFile" uid="uid://d1f6rt03h8u40" path="res://assets/fonts/SuperPixel-m2L8j.ttf" id="2_mj6cy"]
+
+[node name="gameover" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vwrua")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -21.0
+offset_right = 1182.0
+offset_bottom = 661.0
+texture = ExtResource("1_lj4ke")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.826338, 0.0679158, 0.0727427, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 12
+theme_override_constants/shadow_offset_y = 12
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("2_mj6cy")
+theme_override_font_sizes/font_size = 64
+text = "You Died!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="retry" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 90)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.639838, 0.187164, 0.173678, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_mj6cy")
+theme_override_font_sizes/font_size = 32
+text = "retry"
+
+[node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(360, 90)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.609711, 0.201235, 0.188038, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("2_mj6cy")
+theme_override_font_sizes/font_size = 32
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/retry" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

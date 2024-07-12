@@ -1,0 +1,102 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmhkqj8l2aa2k"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_75qoc"]
+[ext_resource type="Shader" path="res://pause_menu.gdshader" id="2_w3xp0"]
+[ext_resource type="FontFile" uid="uid://d1f6rt03h8u40" path="res://assets/fonts/SuperPixel-m2L8j.ttf" id="3_tspub"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gh51u"]
+shader = ExtResource("2_w3xp0")
+shader_parameter/amount = 3.0
+
+[node name="Pause Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_75qoc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_gh51u")
+layout_mode = 0
+offset_left = -120.0
+offset_top = -64.0
+offset_right = 1272.0
+offset_bottom = 712.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 618.0
+offset_bottom = 333.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_tspub")
+text = "Resume"
+
+[node name="Controls" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tspub")
+text = "Controls"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_tspub")
+text = "Quit"
+
+[node name="Controls" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Controls"]
+visible = false
+layout_mode = 0
+offset_left = 288.0
+offset_top = 192.0
+offset_right = 824.0
+offset_bottom = 392.0
+color = Color(0, 0, 0, 0.207843)
+
+[node name="Label" type="Label" parent="Controls"]
+visible = false
+layout_mode = 0
+offset_left = 312.0
+offset_top = 208.0
+offset_right = 804.0
+offset_bottom = 345.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tspub")
+text = "CONTROLS:
+
+-WASD - Move
+-\"i\" - Inventory
+-\"u\" - Use Item
+-\"Left Click\" - Select items in Inventory
+-\"Tab\" - Scroll the selector in the Hotbar"
+horizontal_alignment = 1
+
+[node name="back" type="Button" parent="Controls"]
+visible = false
+layout_mode = 0
+offset_left = 528.0
+offset_top = 352.0
+offset_right = 592.0
+offset_bottom = 377.0
+theme_override_fonts/font = ExtResource("3_tspub")
+text = "BACK"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="focus_entered" from="Controls/Label" to="." method="_on_label_focus_entered"]
+[connection signal="hidden" from="Controls/Label" to="." method="_on_label_hidden"]
+[connection signal="pressed" from="Controls/back" to="." method="_on_back_pressed"]

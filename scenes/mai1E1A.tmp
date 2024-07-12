@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpwl15adl2dkj"]
+
+[ext_resource type="PackedScene" uid="uid://dt4qa042f3a6k" path="res://assets/Wilderness/wilderness.tscn" id="1_a2suj"]
+[ext_resource type="PackedScene" uid="uid://bda3ci4jn6km4" path="res://assets/player/player.tscn" id="2_shlhv"]
+[ext_resource type="Script" path="res://assets/player/follow_cam.gd" id="3_80yoq"]
+[ext_resource type="PackedScene" uid="uid://s6tpbyuiyigq" path="res://assets/Enemies/Wilderness Enemy/AngryPig/angry_pig.tscn" id="4_g5mtr"]
+
+[node name="main" type="Node2D"]
+
+[node name="Wilderness" parent="." instance=ExtResource("1_a2suj")]
+
+[node name="Player" parent="Wilderness" instance=ExtResource("2_shlhv")]
+position = Vector2(231, 188)
+
+[node name="follow_cam" type="Camera2D" parent="Wilderness/Player"]
+zoom = Vector2(5, 5)
+limit_left = 0
+limit_top = 0
+limit_right = 1150
+limit_bottom = 650
+limit_smoothed = true
+position_smoothing_enabled = true
+script = ExtResource("3_80yoq")
+
+[node name="Angry Pig" parent="." instance=ExtResource("4_g5mtr")]
+position = Vector2(273, 205)
